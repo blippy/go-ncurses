@@ -22,7 +22,7 @@ import (
 	"fmt"
 
 	//"seehuhn.de/go/ncurses"
-	"github.com/blippy/go/ncurses"
+	"github.com/blippy/go-ncurses"
 )
 
 func main() {
