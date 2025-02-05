@@ -17,8 +17,8 @@
 package goncurses
 
 import (
-	"fmt"
-	"unicode"
+	//"fmt"
+	//"unicode"
 	"unicode/utf8"
 )
 
@@ -33,14 +33,16 @@ import "C"
 // milliseconds, and returns `KeyTimeout` if there is still no input.
 func (w *Window) SetTimeout(delay int) {
 	C.wtimeout(w.ptr, C.int(delay))
-	w.timeout = delay
+	//w.timeout = delay
 }
 
 // GetTimeout returns the currently used timeout for input.  See
 // `SetTimeout()` for the meaning of the returned value.
+/*
 func (w *Window) GetTimeout() int {
 	return w.timeout
 }
+*/
 
 // GetCh reads a character from the window.  Input is expected to be
 // utf-8 encoded and is converted to `rune`.
@@ -84,6 +86,7 @@ func control(c rune) rune {
 // text can be entered.
 //
 // Refresh() is called before any character is read.
+/*
 func (w *Window) Readline(maxLen int) string {
 	oldCurs, cerr := CursSet(CursorOn)
 
@@ -206,3 +209,4 @@ func (w *Window) Readline(maxLen int) string {
 
 	return string(res)
 }
+*/

@@ -39,6 +39,7 @@ package goncurses
 // }
 import "C"
 
+/*
 import (
 	"os"
 	"os/signal"
@@ -47,13 +48,16 @@ import (
 
 	"golang.org/x/sys/unix"
 )
+*/
 
+/*
 var global struct {
 	sync.Mutex
 
 	isInitialized bool
 	signals       chan os.Signal
 }
+*/
 
 // Beep is used to alert the terminal user.  The function sounds an
 // audible alarm on the terminal, if possible; otherwise it flashes
@@ -65,23 +69,32 @@ func Beep() {
 // EndWin must be called before the program exits, in order to restore
 // the terminal to a usable state.
 func EndWin() {
+	/*
 	signal.Stop(global.signals)
 	close(global.signals)
-
+*/
 	C.endwin()
-
+/*
 	global.Lock()
 	if !global.isInitialized {
 		panic("ncurses not initialized")
 	}
 	global.isInitialized = false
 	global.Unlock()
+	*/
 }
 
 // Init initialises the curses library and returns a Window
 // corresponding to the whole screen.  You can either use this window,
 // or allocate your own, smaller windows using NewWin().
 func Init() *Window {
+	scr := &Window{C.initscr()}
+	if scr == nil {
+		panic("An error occurred initializing ncurses")
+	}
+	return scr
+
+	/*
 	global.Lock()
 	defer global.Unlock()
 
@@ -105,8 +118,10 @@ func Init() *Window {
 	go signalHandler()
 
 	return res
+	*/
 }
 
+/*
 func signalHandler() {
 	for sig := range global.signals {
 		switch sig {
@@ -122,12 +137,13 @@ func signalHandler() {
 		}
 	}
 }
+*/
 
 // A Window is the central data structure in the ncurses library.
 // Most functionality is implemented as methods of Window objects.
 type Window struct {
 	ptr     *C.WINDOW
-	timeout int
+	//timeout int
 }
 
 // NewWin creates a new window at screen position (beginY, beginX).
@@ -144,7 +160,7 @@ func NewWin(nLines, nCols, beginY, beginX int) *Window {
 	}
 	return &Window{
 		ptr:     ptr,
-		timeout: -1,
+		//timeout: -1,
 	}
 }
 
