@@ -1,4 +1,4 @@
-module github.com/blippy/go-ncurses
+module github.com/blippy/goncurses
 
 go 1.16
 
