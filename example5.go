@@ -19,7 +19,7 @@
 package main
 
 //import "seehuhn.de/go/ncurses"
-import "github.com/blippy/go-ncurses"
+import "github.com/blippy/goncurses"
 
 func main() {
 	win := ncurses.Init()

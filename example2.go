@@ -23,7 +23,7 @@ import (
 	"math"
 
 	//"seehuhn.de/go/ncurses"
-	"github.com/blippy/go-ncurses"
+	"github.com/blippy/goncurses"
 )
 
 func rgb(alpha float64) (int, int, int) {
