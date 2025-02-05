@@ -1,4 +1,4 @@
-// seehuhn.de/go/ncurses - a Go-wrapper for the ncurses library
+// seehuhn.de/go/goncurses - a Go-wrapper for the ncurses library
 // Copyright (C) 2018  Jochen Voss <voss@seehuhn.de>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -21,12 +21,12 @@ package main
 import (
 	"fmt"
 
-	//"seehuhn.de/go/ncurses"
+	//"seehuhn.de/go/goncurses"
 	"github.com/blippy/goncurses"
 )
 
 func main() {
-	win := ncurses.Init()
+	win := goncurses.Init()
 	win.Println("enter any text and press return:")
 
 	n := 40
@@ -37,6 +37,6 @@ func main() {
 	win.Move(1, 1)
 	s := win.Readline(n)
 
-	ncurses.EndWin()
+	goncurses.EndWin()
 	fmt.Println(s)
 }

@@ -1,4 +1,4 @@
-// seehuhn.de/go/ncurses - a Go-wrapper for the ncurses library
+// seehuhn.de/go/goncurses - a Go-wrapper for the ncurses library
 // Copyright (C) 2018  Jochen Voss <voss@seehuhn.de>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -21,28 +21,28 @@ package main
 import (
 	"fmt"
 
-	//"seehuhn.de/go/ncurses"
+	//"seehuhn.de/go/goncurses"
 	"github.com/blippy/goncurses"
 )
 
 func main() {
-	win := ncurses.Init()
-	defer ncurses.EndWin()
+	win := goncurses.Init()
+	defer goncurses.EndWin()
 
 	table := []struct {
 		Name string
-		Code ncurses.AttrType
+		Code goncurses.AttrType
 	}{
-		{"normal", ncurses.AttrNormal},
-		{"standout", ncurses.AttrStandout},
-		{"underline", ncurses.AttrUnderline},
-		{"reverse", ncurses.AttrReverse},
-		{"blink", ncurses.AttrBlink},
-		{"dim", ncurses.AttrDim},
-		{"bold", ncurses.AttrBold},
-		{"protect", ncurses.AttrProtect},
-		{"invis", ncurses.AttrInvis},
-		{"altcharset", ncurses.AttrAltcharset},
+		{"normal", goncurses.AttrNormal},
+		{"standout", goncurses.AttrStandout},
+		{"underline", goncurses.AttrUnderline},
+		{"reverse", goncurses.AttrReverse},
+		{"blink", goncurses.AttrBlink},
+		{"dim", goncurses.AttrDim},
+		{"bold", goncurses.AttrBold},
+		{"protect", goncurses.AttrProtect},
+		{"invis", goncurses.AttrInvis},
+		{"altcharset", goncurses.AttrAltcharset},
 	}
 
 	win.AddStr("\n")

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-package ncurses
+package goncurses
 
 // #cgo CFLAGS: -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED
 // #cgo !darwin LDFLAGS: -lncursesw

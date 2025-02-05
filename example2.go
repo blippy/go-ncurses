@@ -1,4 +1,4 @@
-// seehuhn.de/go/ncurses - a Go-wrapper for the ncurses library
+// seehuhn.de/go/goncurses - a Go-wrapper for the ncurses library
 // Copyright (C) 2018  Jochen Voss <voss@seehuhn.de>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"math"
 
-	//"seehuhn.de/go/ncurses"
+	//"seehuhn.de/go/goncurses"
 	"github.com/blippy/goncurses"
 )
 
@@ -49,32 +49,32 @@ func rgb(alpha float64) (int, int, int) {
 }
 
 func main() {
-	win := ncurses.Init()
-	defer ncurses.EndWin()
+	win := goncurses.Init()
+	defer goncurses.EndWin()
 
-	numColors := ncurses.NumColors()
+	numColors := goncurses.NumColors()
 	win.AddStr(fmt.Sprintf("COLORS = %d\n", numColors))
-	numPairs := ncurses.NumColorPairs()
+	numPairs := goncurses.NumColorPairs()
 	win.AddStr(fmt.Sprintf("COLOR_PAIRS = %d\n", numPairs))
 
 	if numPairs >= 8 {
 		table := []struct {
 			Name string
-			Col  ncurses.Color
+			Col  goncurses.Color
 		}{
-			{"red", ncurses.ColorRed},
-			{"green", ncurses.ColorGreen},
-			{"yellow", ncurses.ColorYellow},
-			{"blue", ncurses.ColorBlue},
-			{"magenta", ncurses.ColorMagenta},
-			{"cyan", ncurses.ColorCyan},
-			{"white", ncurses.ColorWhite},
+			{"red", goncurses.ColorRed},
+			{"green", goncurses.ColorGreen},
+			{"yellow", goncurses.ColorYellow},
+			{"blue", goncurses.ColorBlue},
+			{"magenta", goncurses.ColorMagenta},
+			{"cyan", goncurses.ColorCyan},
+			{"white", goncurses.ColorWhite},
 		}
 		win.Println()
 		for i, entry := range table {
 			// ColorPair(0) are the default colours
-			cp := ncurses.ColorPair(i + 1)
-			cp.Init(entry.Col, ncurses.ColorBlack)
+			cp := goncurses.ColorPair(i + 1)
+			cp.Init(entry.Col, goncurses.ColorBlack)
 			win.AttrOn(cp.AsAttr())
 			win.Println(entry.Name)
 		}
@@ -91,16 +91,16 @@ func main() {
 	if k > 1 {
 		win.Println()
 		for i := 0; i < k; i++ {
-			col := ncurses.Color(i + 16)
+			col := goncurses.Color(i + 16)
 			r, g, b := rgb(float64(i) / float64(k))
 			col.Init(r, g, b)
-			cp := ncurses.ColorPair(i + 8)
-			cp.Init(col, ncurses.ColorBlack)
+			cp := goncurses.ColorPair(i + 8)
+			cp.Init(col, goncurses.ColorBlack)
 		}
 		for l := 0; l < 5; l++ {
 			for i := 0; i <= k; i++ {
 				j := (i + l) % k
-				cp := ncurses.ColorPair(j + 8)
+				cp := goncurses.ColorPair(j + 8)
 				win.AttrSet(cp.AsAttr())
 				win.Print("X")
 			}

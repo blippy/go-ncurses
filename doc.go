@@ -38,4 +38,4 @@
 // Screen coordinates follow the ncurses conventions: in argument
 // lists, the row y is given first, followed by the column x.  The top
 // left corner of a window coresponds to y=0, x=0.
-package ncurses // import "seehuhn.de/go/ncurses"
+package goncurses // import "seehuhn.de/go/ncurses"
