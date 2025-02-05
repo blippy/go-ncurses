@@ -18,7 +18,8 @@
 
 package main
 
-import "seehuhn.de/go/ncurses"
+//import "seehuhn.de/go/ncurses"
+import "github.com/blippy/go/ncurses"
 
 func main() {
 	win := ncurses.Init()

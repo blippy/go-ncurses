@@ -19,7 +19,8 @@
 package main
 
 import (
-	"seehuhn.de/go/ncurses"
+	//"seehuhn.de/go/ncurses"
+	"github.com/blippy/go/ncurses"
 )
 
 func main() {
