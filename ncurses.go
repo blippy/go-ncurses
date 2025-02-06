@@ -166,6 +166,20 @@ func NewWin(nLines, nCols, beginY, beginX int) *Window {
 	}
 }
 
+func SubWin(parent *Window, nLines, nCols, beginY, beginX int) *Window {
+	nl := C.int(nLines)
+	nc := C.int(nCols)
+	by := C.int(beginY)
+	bx := C.int(beginX)
+	ptr := C.subwin(parent.ptr, nl, nc, by, bx)
+	if ptr == nil {
+		return nil
+	}
+	return &Window{
+		ptr:     ptr,
+		//timeout: -1,
+	}
+}
 // ScrollOk controls what happens when the cursor of a window is moved
 // off the edge of the window or scrolling region, either as a result
 // of a newline action on the bottom line, or typing the last
@@ -236,6 +250,8 @@ func (w *Window) SetBackground(char string, attrs AttrType, colorPair ColorPair)
 }
 
 // just return an interesting tag
+/*
 func Tag() string {
 	return "v0.1.2"
 }
+*/
