@@ -13,6 +13,8 @@ This package can be installed using the ``go get`` command::
 
 ## Usage
 
+In order to get UTF-8 to work, you will need to set locale LC\_ALL to "".
+
 Documentation is available via the package's online help, either on
 pkg.go.dev_ or on the command line::
 

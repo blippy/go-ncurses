@@ -84,11 +84,13 @@ func EndWin() {
 	*/
 }
 
+// FN Init
 // Init initialises the curses library and returns a Window
 // corresponding to the whole screen.  You can either use this window,
 // or allocate your own, smaller windows using NewWin().
 func Init() *Window {
-	scr := &Window{C.initscr()}
+	scr := &Window{C.term_init()}
+	//scr := &Window{C.initscr()}
 	if scr == nil {
 		panic("An error occurred initializing ncurses")
 	}
@@ -231,4 +233,9 @@ func (w *Window) SetBackground(char string, attrs AttrType, colorPair ColorPair)
 	wch := stringToC(char)
 	C.setcchar(&c, &wch[0], C.attr_t(attrs), C.short(colorPair), C.NULL)
 	C.wbkgrndset(w.ptr, &c)
+}
+
+// just return an interesting tag
+func Tag() string {
+	return "v0.1.2"
 }
