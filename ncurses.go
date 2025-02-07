@@ -89,7 +89,7 @@ func EndWin() {
 // corresponding to the whole screen.  You can either use this window,
 // or allocate your own, smaller windows using NewWin().
 func Init() *Window {
-	scr := &Window{C.term_init()}
+	scr := &Window{C.term_init(), -1}
 	//scr := &Window{C.initscr()}
 	if scr == nil {
 		panic("An error occurred initializing ncurses")
@@ -145,7 +145,7 @@ func signalHandler() {
 // Most functionality is implemented as methods of Window objects.
 type Window struct {
 	ptr     *C.WINDOW
-	//timeout int
+	timeout int
 }
 
 // NewWin creates a new window at screen position (beginY, beginX).
@@ -162,7 +162,7 @@ func NewWin(nLines, nCols, beginY, beginX int) *Window {
 	}
 	return &Window{
 		ptr:     ptr,
-		//timeout: -1,
+		timeout: -1,
 	}
 }
 
@@ -177,7 +177,7 @@ func SubWin(parent *Window, nLines, nCols, beginY, beginX int) *Window {
 	}
 	return &Window{
 		ptr:     ptr,
-		//timeout: -1,
+		timeout: -1,
 	}
 }
 // ScrollOk controls what happens when the cursor of a window is moved

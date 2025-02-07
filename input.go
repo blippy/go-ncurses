@@ -17,8 +17,8 @@
 package goncurses
 
 import (
-	//"fmt"
-	//"unicode"
+	"fmt"
+	"unicode"
 	"unicode/utf8"
 )
 
@@ -38,11 +38,11 @@ func (w *Window) SetTimeout(delay int) {
 
 // GetTimeout returns the currently used timeout for input.  See
 // `SetTimeout()` for the meaning of the returned value.
-/*
-func (w *Window) GetTimeout() int {
+// FN GetTimeout 
+func (w *Window) GetTimeout () int {
 	return w.timeout
 }
-*/
+
 
 // GetCh reads a character from the window.  Input is expected to be
 // utf-8 encoded and is converted to `rune`.
@@ -81,13 +81,14 @@ func control(c rune) rune {
 	return c - 'A' + 1
 }
 
+
+// FN Readline 
 // Readline allows the user to enter a line of text.  Simple
 // line-editing is provided and up to `maxLen` (unicode) characters of
 // text can be entered.
 //
 // Refresh() is called before any character is read.
-/*
-func (w *Window) Readline(maxLen int) string {
+func (w *Window) Readline (maxLen int) string {
 	oldCurs, cerr := CursSet(CursorOn)
 
 	y, x := w.GetYX()
@@ -209,4 +210,4 @@ func (w *Window) Readline(maxLen int) string {
 
 	return string(res)
 }
-*/
+
