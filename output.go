@@ -24,6 +24,7 @@ import (
 // #include <ncurses.h>
 import "C"
 
+// FN Refresh 
 // Refresh must be called to get actual output to the terminal, as
 // other routines merely manipulate data structures.  The routine
 // copies the named window to the physical terminal screen, taking
@@ -35,6 +36,7 @@ func (w *Window) Refresh() {
 	C.wrefresh(w.ptr)
 }
 
+// FN Erase 
 // Erase copies blanks to every position in the window, thus clearing
 // the window.  The blanks created by Erase() have the current
 // background rendition, as set by SetBackground(), merged into them.
